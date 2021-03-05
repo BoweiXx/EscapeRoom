@@ -10,7 +10,7 @@ var creds = {
   password: "mfh9AHo7TjtRPhwX"
 };
 var client;
-var topic = "letter2";
+var topic = "letter1";
 /*-----------------------MQTT--------------------------------*/
 
 var color = {
@@ -25,21 +25,31 @@ var n = 20; //number of blobs
 
 var r = 100;
 var vnumber = 1;
-var maxRange = 300;
-var stage = 2;
-var answer = [8, 9, 3, 4, 5];
+var maxRange = 250;
+var stage = 0;
+var answer = [8, 9, 2, 3, 5];
 var sublocx = [];
 var sublocy = [];
 var arrayImg = [];
 var input = [];
 var execution = false;
 var alertExecution = false;
+var table;
+var loveletter;
 
 function preload() {
-  for (var i = 1; i < 11; i++) {
-    arrayImg[i] = loadImage("assets/" + i + ".png");
-  } // console.log("load image successfully");
-
+  arrayImg[1] = loadImage("assets/1.png");
+  arrayImg[2] = loadImage("assets/2.png");
+  arrayImg[3] = loadImage("assets/3.png");
+  arrayImg[4] = loadImage("assets/4.png");
+  arrayImg[5] = loadImage("assets/5.png");
+  arrayImg[6] = loadImage("assets/6.png");
+  arrayImg[7] = loadImage("assets/7.png");
+  arrayImg[8] = loadImage("assets/8.png");
+  arrayImg[9] = loadImage("assets/9.png");
+  arrayImg[10] = loadImage("assets/10.png");
+  table = loadImage("assets/table.png");
+  loveletter = loadImage("assets/loveletter.jpg");
 }
 
 function setup() {
@@ -59,9 +69,15 @@ function setup() {
 
 function draw() {
   switch (stage) {
+    case 0:
+      background(255);
+      textSize(60);
+      text("waiting for another player", width / 2 - 300, height / 2);
+      break;
     //letter phase
+
     case 1:
-      background(0);
+      image(loveletter, 0, 0, width, height);
       break;
     //synthesization phase
 
@@ -94,30 +110,30 @@ function draw() {
       /*------------------------------------------------icon-----------------------------------------*/
 
 
-      for (var i = 1; i < 11; i++) {
+      for (var j = 1; j < 11; j++) {
         // console.log(arrayImg);
         //on the left
-        if (i <= 5) {
+        if (j <= 5) {
           var offset = 100;
           var tempXLoc = width / 4;
           var tempYloc = (windowHeight - 250) / 6;
           var Ystep = (windowHeight - 250) / 6;
-          image(arrayImg[i], tempXLoc + offset * (i % 2 - 2), tempYloc + Ystep * i, 50, 50);
+          image(arrayImg[j], tempXLoc + offset * (j % 2 - 2), tempYloc + Ystep * j, 50, 50);
 
           if (!execution) {
-            sublocx.push(tempXLoc + offset * (i % 2 - 2));
-            sublocy.push(tempYloc + Ystep * i);
+            sublocx.push(tempXLoc + offset * (j % 2 - 2));
+            sublocy.push(tempYloc + Ystep * j);
           }
         } else {
           var offset2 = 100;
           var tempXLoc2 = 7 * width / 8;
           var tempYLoc2 = (windowHeight - 250) / 6;
           var Ystep2 = (windowHeight - 250) / 6;
-          image(arrayImg[i], tempXLoc2 + offset2 * (i % 2 - 2), tempYLoc2 + Ystep2 * (i - 5), 50, 50);
+          image(arrayImg[j], tempXLoc2 + offset2 * (j % 2 - 2), tempYLoc2 + Ystep2 * (j - 5), 50, 50);
 
           if (!execution) {
-            sublocx.push(tempXLoc2 + offset2 * (i % 2 - 2));
-            sublocy.push(tempYLoc2 + Ystep2 * (i - 5));
+            sublocx.push(tempXLoc2 + offset2 * (j % 2 - 2));
+            sublocy.push(tempYLoc2 + Ystep2 * (j - 5));
           }
         }
       }
@@ -127,25 +143,26 @@ function draw() {
 
       /*-----------------------------------------------Silly Visual----------------------------------------*/
 
-      for (var i = 0; i < 11; i++) {
-        if (dist(mouseX, mouseY, sublocx[i], sublocy[i]) < 50) {
+      for (var k = 0; k < 11; k++) {
+        if (dist(mouseX, mouseY, sublocx[k], sublocy[k]) < 50) {
           noFill();
           stroke(255, 0, 120);
           strokeWeight(5);
-          ellipse(sublocx[i] + 25, sublocy[i] + 20, 80, 80);
+          ellipse(sublocx[k] + 25, sublocy[k] + 25, 80, 80);
         }
       }
 
       console.log(input);
       var t = millis() / 1000;
 
-      for (var _i = 0; _i < n; _i++) {
-        var noisiness = maxRange * (_i / n);
+      for (var l = 0; l < n; l++) {
+        var noisiness = maxRange * (l / n);
         noStroke();
         fill(color.redc, color.g, color.b, color.a);
-        blob(r, width / 2, height / 2, delta, t - _i * step, noisiness, vnumber);
+        blob(r, width / 2, height / 2, delta, t - l * step, noisiness, vnumber);
       }
 
+      image(table, width * 2 / 5, height * 75 / 100, 400, 200);
       break;
 
     default:
@@ -154,9 +171,9 @@ function draw() {
 }
 
 function mousePressed() {
-  for (var i = 0; i < 11; i++) {
-    if (dist(mouseX, mouseY, sublocx[i] + 25, sublocy[i] + 20) < 50) {
-      input.push(i + 1);
+  for (var m = 0; m < 11; m++) {
+    if (dist(mouseX, mouseY, sublocx[m] + 25, sublocy[m] + 25) < 50) {
+      input.push(m + 1);
       vnumber = input.length * 3;
     }
   }
@@ -184,7 +201,7 @@ function blob(size, xC, yC, k, t, range, vn) {
 function onConnect() {
   client.subscribe(topic);
   console.log("onConnect");
-  message = new Paho.MQTT.Message("stage2");
+  message = new Paho.MQTT.Message("helloletter1");
   message.destinationName = topic;
   client.send(message);
 } // called when the client loses its connection
@@ -199,6 +216,10 @@ function onConnectionLost(response) {
 
 function onMessageArrived(message) {
   var incoming = split(trim(message.payloadString), "/");
+
+  if (incoming == "helloletter2") {
+    stage = 1;
+  }
 
   if (incoming == "stage2") {
     stage = 2;
