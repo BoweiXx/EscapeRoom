@@ -30,6 +30,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(255);
+  imageMode(CENTER);
   client = new Paho.MQTT.Client(broker.hostname, Number(broker.port), creds.clientID);
   client.onConnectionLost = onConnectionLost;
   client.onMessageArrived = onMessageArrived;
@@ -76,12 +77,12 @@ function keyTyped() {
     case 'a':
       if (indext % 2 == 0) {
         if (indexi % 2 == 1 && indexi != 0) {
-          image(arrayA[1], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[1], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
           sendMqttMessage("a");
         }
       } else {
         if (indexi % 2 == 0 && indexi != 0) {
-          image(arrayA[1], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[1], (width / 7) * (indexi / 2), height / 2);
           sendMqttMessage("a");
         }
       }
@@ -89,12 +90,12 @@ function keyTyped() {
     case 'b':
       if (indext % 2 == 0) {
         if (indexi % 2 == 1 && indexi != 0) {
-          image(arrayA[2], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[2], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
           sendMqttMessage("b");
         }
       } else {
         if (indexi % 2 == 0 && indexi != 0) {
-          image(arrayA[2], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[2], (width / 7) * (indexi / 2), height / 2);
           sendMqttMessage("b");
         }
       }
@@ -102,12 +103,12 @@ function keyTyped() {
     case 'c':
       if (indext % 2 == 0) {
         if (indexi % 2 == 1 && indexi != 0) {
-          image(arrayA[3], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[3], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
           sendMqttMessage("c");
         }
       } else {
         if (indexi % 2 == 0 && indexi != 0) {
-          image(arrayA[3], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[3], (width / 7) * (indexi / 2), height / 2);
           sendMqttMessage("c");
         }
       }
@@ -115,24 +116,24 @@ function keyTyped() {
     case 'd':
       if (indext % 2 == 0) {
         if (indexi % 2 == 1 && indexi != 0) {
-          image(arrayA[4], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[4], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
           sendMqttMessage("d");
         }
       } else {
         if (indexi % 2 == 0 && indexi != 0) {
-          image(arrayA[4], (width / 7) * (indexi / 2) - 1, height / 2);
+          image(arrayA[4], (width / 7) * (indexi / 2) , height / 2);
           sendMqttMessage("d");
         }
       }
       case 'e':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[5], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[5], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("e");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[5], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[5], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("e");
           }
         }
@@ -140,12 +141,12 @@ function keyTyped() {
       case 'f':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[6], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[6], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("f");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[6], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[6], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("f");
           }
         }
@@ -153,12 +154,12 @@ function keyTyped() {
       case 'g':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[7], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[7], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("g");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[7], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[7], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("g");
           }
         }
@@ -166,12 +167,12 @@ function keyTyped() {
       case 'h':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[8], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[8], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("h");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[8], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[8], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("h");
           }
         }
@@ -179,12 +180,12 @@ function keyTyped() {
       case 'i':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[9], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[9], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("i");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[9], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[9], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("i");
           }
         }
@@ -192,12 +193,12 @@ function keyTyped() {
       case 'j':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[10], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[10], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("j");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[10], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[10], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("j");
           }
         }
@@ -205,12 +206,12 @@ function keyTyped() {
       case 'k':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[11], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[11], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("k");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[11], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[11], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("k");
           }
         }
@@ -218,12 +219,12 @@ function keyTyped() {
       case 'l':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[12], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[12], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("l");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[12], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[12], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("l");
           }
         }
@@ -231,12 +232,12 @@ function keyTyped() {
       case 'm':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[13], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[13], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("m");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[13], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[13], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("m");
           }
         }
@@ -244,12 +245,12 @@ function keyTyped() {
       case 'n':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[14], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[14], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("n");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[14], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[14], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("n");
           }
         }
@@ -257,12 +258,12 @@ function keyTyped() {
       case 'o':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[15], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[15], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("o");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[15], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[15], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("o");
           }
         }
@@ -270,12 +271,12 @@ function keyTyped() {
       case 'p':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[16], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[16], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("p");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[16], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[16], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("p");
           }
         }
@@ -283,12 +284,12 @@ function keyTyped() {
       case 'q':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[17], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[17], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("q");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[17], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[17], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("q");
           }
         }
@@ -296,12 +297,12 @@ function keyTyped() {
       case 'r':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[18], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[18], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("r");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[18], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[18], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("r");
           }
         }
@@ -309,12 +310,12 @@ function keyTyped() {
       case 's':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[19], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[19], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("s");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[19], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[19], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("s");
           }
         }
@@ -322,12 +323,12 @@ function keyTyped() {
       case 't':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[20], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[20], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("t");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[20], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[20], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("t");
           }
         }
@@ -335,12 +336,12 @@ function keyTyped() {
       case 'u':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[21], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[21], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("u");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[21], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[21], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("u");
           }
         }
@@ -348,12 +349,12 @@ function keyTyped() {
       case 'v':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[22], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[22], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("v");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[22], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[22], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("v");
           }
         }
@@ -361,12 +362,12 @@ function keyTyped() {
       case 'w':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[23], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[23], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("w");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[23], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[23], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("w");
           }
         }
@@ -374,12 +375,12 @@ function keyTyped() {
       case 'x':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[24], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[24], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("x");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[24], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[24], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("x");
           }
         }
@@ -387,12 +388,12 @@ function keyTyped() {
       case 'y':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[25], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[25], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("y");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[25], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[25], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("y");
           }
         }
@@ -400,12 +401,12 @@ function keyTyped() {
       case 'z':
         if (indext % 2 == 0) {
           if (indexi % 2 == 1 && indexi != 0) {
-            image(arrayA[26], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[26], (width / 7) * (floor((indexi / 2)) + 1), height / 2);
             sendMqttMessage("z");
           }
         } else {
           if (indexi % 2 == 0 && indexi != 0) {
-            image(arrayA[26], (width / 7) * (indexi / 2) - 1, height / 2);
+            image(arrayA[26], (width / 7) * (indexi / 2), height / 2);
             sendMqttMessage("z");
           }
         }
